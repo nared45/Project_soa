@@ -1,4 +1,4 @@
-package com.example.Project_soa;
+package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
