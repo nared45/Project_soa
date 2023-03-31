@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Mar 28, 2023, 10:10:58 AM by Hibernate Tools 6.0.2.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="reviewtestsoa" name="th.ac.ku.kps.eng.cpe.soa.model.Userproduct" optimistic-lock="none" table="userproduct">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="th.ac.ku.kps.eng.cpe.soa.model.Product" fetch="select" name="product">
+            <column name="productId"/>
+        </many-to-one>
+        <many-to-one class="th.ac.ku.kps.eng.cpe.soa.model.User" fetch="select" name="user">
+            <column name="userId"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

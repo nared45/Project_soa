@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Mar 28, 2023, 10:10:58 AM by Hibernate Tools 6.0.2.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="reviewtestsoa" name="th.ac.ku.kps.eng.cpe.soa.model.User" optimistic-lock="none" table="user">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="code" type="string">
+            <column length="50" name="code" not-null="true"/>
+        </property>
+        <property name="name" type="string">
+            <column length="50" name="name" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="false" name="userproducts" table="userproduct">
+            <key>
+                <column name="userId"/>
+            </key>
+            <one-to-many class="th.ac.ku.kps.eng.cpe.soa.model.Userproduct"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Mar 28, 2023, 11:02:47 AM by Hibernate Tools 5.6.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="airport" name="model.Booking" optimistic-lock="none" table="booking">
+        <id name="bookingId" type="java.lang.Integer">
+            <column name="bookingId"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="model.Flight" fetch="select" name="flight">
+            <column name="flightId" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="model.Seat" fetch="select" name="seat">
+            <column name="seatId" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="model.User" fetch="select" name="user">
+            <column name="userId" not-null="true"/>
+        </many-to-one>
+        <property name="date" type="date">
+            <column length="10" name="date"/>
+        </property>
+    </class>
+</hibernate-mapping>
