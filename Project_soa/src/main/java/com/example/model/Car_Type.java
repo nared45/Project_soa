@@ -1,11 +1,14 @@
 package com.example.model;
 
+import java.util.Set;
+
 import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,4 +38,6 @@ public class Car_Type {
 	public void setType_model(String type_model) {
 		this.type_model = type_model;
 	}
+
+	
 }

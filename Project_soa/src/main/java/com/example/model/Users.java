@@ -21,7 +21,6 @@ public class Users {
 	private String user_phonenumber;
 	@Column(name = "user_type")
 	private String user_type;
-	
 	public Users() {
 		
 	}
