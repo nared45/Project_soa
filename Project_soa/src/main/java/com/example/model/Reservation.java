@@ -1,12 +1,18 @@
 package com.example.model;
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Date;
+import java.util.TimeZone;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,6 +33,8 @@ public class Reservation {
 	private Date end_date;
 	@Column(name = "total_cost")
 	private double total_cost;
+	
+
 	
 	public Reservation() {
 		
