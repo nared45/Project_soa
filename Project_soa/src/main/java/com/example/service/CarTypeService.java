@@ -16,4 +16,8 @@ public class CarTypeService {
 	public List<Car_Type> findAll() {
 		return (List<Car_Type>) carTypeRepository.findAll();
 	}
+	
+	public void delete(int id) {
+		carTypeRepository.deleteById(id);
+	}
 }
