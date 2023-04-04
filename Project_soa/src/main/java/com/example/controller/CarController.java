@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +43,25 @@ public class CarController {
 		car.setCar_type(carTypeService.findById(id));
 		carService.createCar(car);
 		String successMessage = "Create cars Successfully.";
+		ResponseEntity<String> response = new ResponseEntity<String>(successMessage, HttpStatus.OK);
+		return response;
+	}
+	@PutMapping("/update/{id}/type/{carType_id}")
+	public ResponseEntity<String> updateCar(@RequestBody Car car,@PathVariable("id") int id,
+			@PathVariable("carType_id") int carType_id){
+		//Car carDB = new Car();
+		car.setCar_id(id);
+		car.setCar_type(carTypeService.findById(carType_id));
+		
+//		carDB.setCar_id(id);
+//		carDB.setCar_name(car.getCar_name());
+//		carDB.setColor(car.getColor());
+//		carDB.setDescription(car.getDescription());
+//		carDB.setPlat_number(car.getPlat_number());
+//		carDB.setPrice_per_day(car.getPrice_per_day());
+//		carDB.setCar_type(carTypeService.findById(carType_id));
+		carService.updateCar(car);
+		String successMessage = "update cars Successfully.";
 		ResponseEntity<String> response = new ResponseEntity<String>(successMessage, HttpStatus.OK);
 		return response;
 	}

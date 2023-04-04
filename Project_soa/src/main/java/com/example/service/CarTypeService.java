@@ -25,4 +25,8 @@ public class CarTypeService {
 	public Car_Type findById(int id) {
 		return carTypeRepository.findById(id).get();
 	}
+	
+	public void updateType(Car_Type carType) {
+		carTypeRepository.save(carType);
+	}
 }
