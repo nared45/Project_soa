@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,6 +28,10 @@ public class CarTypeController {
 	@GetMapping
 	public List<Car_Type> findAllCarType() {
 		return (List<Car_Type>) carTypeService.findAll();
+	}
+	@GetMapping("/{id}")
+	public Car_Type findById(@PathVariable("id") int id) {
+		return carTypeService.findById(id);
 	}
 	
 	@DeleteMapping("/delete/{id}")

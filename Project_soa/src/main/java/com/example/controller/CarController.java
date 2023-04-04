@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,13 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.Car;
+import com.example.model.Car_Type;
 import com.example.service.CarService;
+import com.example.service.CarTypeService;
 
 @RestController
 @RequestMapping("/cars")
 public class CarController {
 	@Autowired
 	private CarService carService;
+	@Autowired
+	private CarTypeService carTypeService;
 	
 	@GetMapping
 	public List<Car> findAll(){
@@ -32,13 +37,14 @@ public class CarController {
 		carService.delete(id);
 	}
 	
-//	@PostMapping("/cars")
-//	public ResponseEntity<String> createUser(@RequestBody Car car) {
-//		carService.createCar(car);
-//		String successMessage = "Create cars Successfully.";
-//		ResponseEntity<String> response = new ResponseEntity<String>(successMessage, HttpStatus.OK);
-//		return response;
-//	}
+	@PostMapping("/create/{carType_id}")
+	public ResponseEntity<String> createUser(@RequestBody Car car,@PathVariable("carType_id") int id) {
+		car.setCar_type(carTypeService.findById(id));
+		carService.createCar(car);
+		String successMessage = "Create cars Successfully.";
+		ResponseEntity<String> response = new ResponseEntity<String>(successMessage, HttpStatus.OK);
+		return response;
+	}
 	
 //	@PostMapping("")
 //	public ResponseEntity<String> createMenu(@RequestBody JsonNode body) {
