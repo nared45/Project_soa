@@ -39,7 +39,7 @@ public class CarTypeController {
 	}
 	
 	@PostMapping
-    public ResponseEntity<Car_Type> createUser(@RequestBody Car_Type type) {
+    public ResponseEntity<Car_Type> create(@RequestBody Car_Type type) {
     	Car_Type newType = carTypeService.createType(type);
         return new ResponseEntity<Car_Type>(newType, HttpStatus.CREATED);
     }
