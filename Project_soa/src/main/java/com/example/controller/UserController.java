@@ -49,18 +49,18 @@ public class UserController {
 		return res;
 	}
 
-	@PostMapping("/create")
+	@PostMapping
 	public ResponseEntity<Users> createUser(@RequestBody Users user) {
 		Users createdUser = userService.createUser(user);
 		return new ResponseEntity<Users>(createdUser, HttpStatus.CREATED);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") int id) {
 		userService.delete(id);
 	}
 
-	@PutMapping("/update/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<String> updateUser(@RequestBody Users user, @PathVariable("id") int id) {
 		user.setUser_id(id);
 		userService.updateUser(user);

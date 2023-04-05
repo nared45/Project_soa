@@ -55,7 +55,7 @@ public class CarController {
 		carService.delete(id);
 	}
 
-	@PostMapping("/create/{carType_id}")
+	@PostMapping("/{carType_id}")
 	public ResponseEntity<String> createUser(@RequestBody Car car, @PathVariable("carType_id") int id) {
 		car.setCar_type(carTypeService.findById(id));
 		carService.createCar(car);
@@ -64,7 +64,7 @@ public class CarController {
 		return response;
 	}
 
-	@PutMapping("/update/{id}/type/{carType_id}")
+	@PutMapping("/{id}/type/{carType_id}")
 	public ResponseEntity<String> updateCar(@RequestBody Car car, @PathVariable("id") int id,
 			@PathVariable("carType_id") int carType_id) {
 		// Car carDB = new Car();
