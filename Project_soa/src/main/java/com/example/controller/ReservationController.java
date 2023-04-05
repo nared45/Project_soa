@@ -37,12 +37,12 @@ public class ReservationController {
 		return (List<Reservation>) reservationService.findAll();
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") int id) {
 		reservationService.delete(id);
 	}
 	
-	@PutMapping("/update/{id}/user/{userId}/car/{carId}")
+	@PutMapping("/{id}/user/{userId}/car/{carId}")
 	public ResponseEntity<String> updateReservation(@RequestBody Reservation reserve,@PathVariable("id") int id,
 			@PathVariable("userId") int userId,@PathVariable("carId") int carId){
 		//Car carDB = new Car();

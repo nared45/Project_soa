@@ -33,12 +33,12 @@ public class CarController {
 		return (List<Car>) carService.findAll();
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") int id) {
 		carService.delete(id);
 	}
 	
-	@PostMapping("/create/{carType_id}")
+	@PostMapping("/{carType_id}")
 	public ResponseEntity<String> createUser(@RequestBody Car car,@PathVariable("carType_id") int id) {
 		car.setCar_type(carTypeService.findById(id));
 		carService.createCar(car);
@@ -46,7 +46,7 @@ public class CarController {
 		ResponseEntity<String> response = new ResponseEntity<String>(successMessage, HttpStatus.OK);
 		return response;
 	}
-	@PutMapping("/update/{id}/type/{carType_id}")
+	@PutMapping("/{id}/type/{carType_id}")
 	public ResponseEntity<String> updateCar(@RequestBody Car car,@PathVariable("id") int id,
 			@PathVariable("carType_id") int carType_id){
 		//Car carDB = new Car();
