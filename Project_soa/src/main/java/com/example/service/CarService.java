@@ -1,5 +1,9 @@
 package com.example.service;
 
+import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +21,9 @@ public class CarService {
 	public List<Car> findAll(){
 		return (List<Car>) carRepository.findAll();
 	}
-	
+	public List<Car> findAvailableCars(java.util.Date startDateAsDate, java.util.Date endDateAsDate) {
+        return carRepository.findAvailableCars(startDateAsDate, endDateAsDate);
+    }
 	public void createCar(Car c){
 		 carRepository.save(c);
 	}
