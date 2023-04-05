@@ -27,4 +27,9 @@ public class ReservationService {
 	public void updateReservation(Reservation reserve) {
 		reservationRepository.save(reserve);
     }
+	
+	public List<Reservation> findByUser(Users user) {
+	    return reservationRepository.findByUser(user);
+	}
+	
 }
