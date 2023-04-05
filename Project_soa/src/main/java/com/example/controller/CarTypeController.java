@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +29,6 @@ public class CarTypeController {
 	@Autowired
 	private CarTypeService carTypeService;
 
-	
-	
 	@GetMapping
 	public List<Car_Type> findAllCarType() {
 		return (List<Car_Type>) carTypeService.findAll();
@@ -38,6 +37,12 @@ public class CarTypeController {
 	public Car_Type findById(@PathVariable("id") int id) {
 		return carTypeService.findById(id);
 	}
+	
+	@PostMapping
+    public ResponseEntity<Car_Type> createUser(@RequestBody Car_Type type) {
+    	Car_Type newType = carTypeService.createType(type);
+        return new ResponseEntity<Car_Type>(newType, HttpStatus.CREATED);
+    }
 	
 	@DeleteMapping("/delete/{id}")
 	public void delete(@PathVariable("id") int id) {

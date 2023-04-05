@@ -18,6 +18,10 @@ public class CarTypeService {
 		return (List<Car_Type>) carTypeRepository.findAll();
 	}
 	
+	public Car_Type createType(Car_Type type) {
+        return carTypeRepository.save(type);
+    }
+	
 	public void delete(int id) {
 		carTypeRepository.deleteById(id);
 	}
