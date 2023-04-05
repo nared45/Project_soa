@@ -23,7 +23,7 @@ import com.example.service.UserService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin("http://localhost:8082/")
+@CrossOrigin("http://localhost:8080/")
 public class UserController {
 	@Autowired
 	private UserService userService;
