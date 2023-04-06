@@ -44,10 +44,6 @@ public class ReservationController {
 		return (List<Reservation>) reservationService.findAll();
 	}
 	
-	@DeleteMapping("/{id}")
-	public void delete1(@PathVariable("id") int id) {
-		reservationService.delete(id);
-	}
 	
 
 
