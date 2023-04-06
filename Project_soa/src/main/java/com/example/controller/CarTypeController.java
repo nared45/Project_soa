@@ -49,7 +49,7 @@ public class CarTypeController {
 		carTypeService.delete(id);
 	}
 	
-	@PutMapping("/update/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<String> updateType(@RequestBody Car_Type carType,@PathVariable("id") int id){
 		//Car carDB = new Car();
 		carType.setType_id(id);
