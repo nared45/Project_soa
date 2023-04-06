@@ -29,7 +29,7 @@ public class ReservationService {
     }
 	
 	public List<Reservation> findByUser(Users user) {
-	    return reservationRepository.findByUser(user);
+	    return reservationRepository.findByUsers(user);
 	}
 	
 }

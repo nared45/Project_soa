@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.Car;
-import com.example.model.Car_Type;
+import com.example.model.CarType;
 import com.example.model.Reservation;
 import com.example.model.Users;
 import com.example.service.CarService;
@@ -50,15 +50,15 @@ public class ReservationController {
 		Car car = carService.findById(carId);
 		Users user = userService.findById(userId);
 		reserve.setCar(car);
-		reserve.setUser(user);
-		if (reserve.getStart_date().compareTo(reserve.getEnd_date()) > 0) {
+		reserve.setUsers(user);
+		if (reserve.getStartDate().compareTo(reserve.getEndDate()) > 0) {
 			String errorMessage = "Start date must be before end date.";
 			return ResponseEntity.badRequest().body(errorMessage);
 		}
-		long diffInMillies = reserve.getEnd_date().getTime() - reserve.getStart_date().getTime();
+		long diffInMillies = reserve.getEndDate().getTime() - reserve.getStartDate().getTime();
 		long diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 		System.out.println(diffInDays);
-		reserve.setTotal_cost((car.getPrice_per_day() * (diffInDays+1)));
+		reserve.setTotalCost((car.getPricePerDay() * (diffInDays+1)));
 		reservationService.updateReservation(reserve);
 		return new ResponseEntity<Reservation>(reserve, HttpStatus.CREATED);
 	}
@@ -72,9 +72,9 @@ public class ReservationController {
 	public ResponseEntity<String> updateReservation(@RequestBody Reservation reserve, @PathVariable("id") int id,
 			@PathVariable("userId") int userId, @PathVariable("carId") int carId) {
 		// Car carDB = new Car();
-		reserve.setReservation_id(id);
+		reserve.setReservationId(id);
 		reserve.setCar(carService.findById(carId));
-		reserve.setUser(userService.findById(userId));
+		reserve.setUsers(userService.findById(userId));
 		reservationService.updateReservation(reserve);
 		String successMessage = "update reservation Successfully.";
 		ResponseEntity<String> response = new ResponseEntity<String>(successMessage, HttpStatus.OK);

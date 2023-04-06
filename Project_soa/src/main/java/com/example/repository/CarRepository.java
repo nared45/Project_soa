@@ -16,9 +16,9 @@ import com.example.model.Car;
 
 @Repository
 public interface CarRepository extends JpaRepository<Car, Integer> {
-    @Query("SELECT c FROM Car c WHERE c.car_id NOT IN " +
+    @Query(value="SELECT c FROM Car c WHERE c.car_id NOT IN " +
             "(SELECT r.car.car_id FROM Reservation r WHERE " +
             "(:startDate BETWEEN r.start_date AND r.end_date) OR " +
-            "(:endDate BETWEEN r.start_date AND r.end_date))")
+            "(:endDate BETWEEN r.start_date AND r.end_date))", nativeQuery=true)
     List<Car> findAvailableCars(@Param("startDate") Date startDateAsDate, @Param("endDate") Date endDateAsDate);
 }

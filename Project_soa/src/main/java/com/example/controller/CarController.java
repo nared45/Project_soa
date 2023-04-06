@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.Car;
-import com.example.model.Car_Type;
+import com.example.model.CarType;
 import com.example.service.CarService;
 import com.example.service.CarTypeService;
 
@@ -57,7 +57,7 @@ public class CarController {
 
 	@PostMapping("/{carType_id}")
 	public ResponseEntity<String> createUser(@RequestBody Car car, @PathVariable("carType_id") int id) {
-		car.setCar_type(carTypeService.findById(id));
+		car.setCarType(carTypeService.findById(id));
 		carService.createCar(car);
 		String successMessage = "Create cars Successfully.";
 		ResponseEntity<String> response = new ResponseEntity<String>(successMessage, HttpStatus.OK);
@@ -68,8 +68,8 @@ public class CarController {
 	public ResponseEntity<String> updateCar(@RequestBody Car car, @PathVariable("id") int id,
 			@PathVariable("carType_id") int carType_id) {
 		// Car carDB = new Car();
-		car.setCar_id(id);
-		car.setCar_type(carTypeService.findById(carType_id));
+		car.setCarId(id);
+		car.setCarType(carTypeService.findById(carType_id));
 
 //		carDB.setCar_id(id);
 //		carDB.setCar_name(car.getCar_name());

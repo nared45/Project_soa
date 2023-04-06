@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Apr 7, 2023, 3:25:04 AM by Hibernate Tools 5.6.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="soa66_02" name="com.example.model.CarType" optimistic-lock="none" table="car_type">
+        <id name="typeId" type="java.lang.Integer">
+            <column name="type_id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="typeModel" type="string">
+            <column name="type_model" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="cars" table="car">
+            <key>
+                <column name="type_id" not-null="true"/>
+            </key>
+            <one-to-many class="com.example.model.Car"/>
+        </set>
+    </class>
+</hibernate-mapping>

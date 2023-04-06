@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.service.CarTypeService;
 import com.example.service.UserService;
 import com.example.model.Car;
-import com.example.model.Car_Type;
+import com.example.model.CarType;
 import com.example.model.Users;
 
 
@@ -30,18 +30,18 @@ public class CarTypeController {
 	private CarTypeService carTypeService;
 
 	@GetMapping
-	public List<Car_Type> findAllCarType() {
-		return (List<Car_Type>) carTypeService.findAll();
+	public List<CarType> findAllCarType() {
+		return (List<CarType>) carTypeService.findAll();
 	}
 	@GetMapping("/{id}")
-	public Car_Type findById(@PathVariable("id") int id) {
+	public CarType findById(@PathVariable("id") int id) {
 		return carTypeService.findById(id);
 	}
 	
 	@PostMapping
-    public ResponseEntity<Car_Type> create(@RequestBody Car_Type type) {
-    	Car_Type newType = carTypeService.createType(type);
-        return new ResponseEntity<Car_Type>(newType, HttpStatus.CREATED);
+    public ResponseEntity<CarType> create(@RequestBody CarType type) {
+    	CarType newType = carTypeService.createType(type);
+        return new ResponseEntity<CarType>(newType, HttpStatus.CREATED);
     }
 	
 	@DeleteMapping("/{id}")
@@ -50,9 +50,9 @@ public class CarTypeController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<String> updateType(@RequestBody Car_Type carType,@PathVariable("id") int id){
+	public ResponseEntity<String> updateType(@RequestBody CarType carType,@PathVariable("id") int id){
 		//Car carDB = new Car();
-		carType.setType_id(id);
+		carType.setTypeId(id);
 		carTypeService.updateType(carType);
 		String successMessage = "update car type Successfully.";
 		ResponseEntity<String> response = new ResponseEntity<String>(successMessage, HttpStatus.OK);

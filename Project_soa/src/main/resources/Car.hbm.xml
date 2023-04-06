@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Apr 7, 2023, 3:25:04 AM by Hibernate Tools 5.6.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="soa66_02" name="com.example.model.Car" optimistic-lock="none" table="car">
+        <id name="carId" type="java.lang.Integer">
+            <column name="car_id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="com.example.model.CarType" fetch="select" name="carType">
+            <column name="type_id" not-null="true"/>
+        </many-to-one>
+        <property name="carName" type="string">
+            <column length="25" name="car_name" not-null="true"/>
+        </property>
+        <property name="description" type="string">
+            <column name="description" not-null="true"/>
+        </property>
+        <property name="pricePerDay" type="double">
+            <column name="price_per_day" not-null="true" precision="22" scale="0"/>
+        </property>
+        <property name="color" type="string">
+            <column name="color" not-null="true"/>
+        </property>
+        <property name="platNumber" type="string">
+            <column length="10" name="plat_number" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="reservations" table="reservation">
+            <key>
+                <column name="car_id" not-null="true"/>
+            </key>
+            <one-to-many class="com.example.model.Reservation"/>
+        </set>
+    </class>
+</hibernate-mapping>

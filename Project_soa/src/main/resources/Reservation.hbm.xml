@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Apr 7, 2023, 3:25:04 AM by Hibernate Tools 5.6.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="soa66_02" name="com.example.model.Reservation" optimistic-lock="none" table="reservation">
+        <id name="reservationId" type="java.lang.Integer">
+            <column name="reservation_id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="com.example.model.Car" fetch="select" name="car">
+            <column name="car_id" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="com.example.model.Users" fetch="select" name="users">
+            <column name="user_id" not-null="true"/>
+        </many-to-one>
+        <property name="startDate" type="date">
+            <column length="10" name="start_date" not-null="true"/>
+        </property>
+        <property name="endDate" type="date">
+            <column length="10" name="end_date" not-null="true"/>
+        </property>
+        <property name="totalCost" type="double">
+            <column name="total_cost" not-null="true" precision="22" scale="0"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.Car;
-import com.example.model.Car_Type;
+import com.example.model.CarType;
 import com.example.model.Reservation;
 import com.example.model.Users;
 import com.example.service.ReservationService;
@@ -62,7 +62,7 @@ public class UserController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<String> updateUser(@RequestBody Users user, @PathVariable("id") int id) {
-		user.setUser_id(id);
+		user.setUserId(id);
 		userService.updateUser(user);
 		String successMessage = "update user Successfully.";
 		ResponseEntity<String> response = new ResponseEntity<String>(successMessage, HttpStatus.OK);

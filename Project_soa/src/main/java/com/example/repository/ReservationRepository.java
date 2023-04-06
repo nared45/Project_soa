@@ -10,5 +10,5 @@ import com.example.model.Users;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
-	List<Reservation> findByUser(Users user);
+	List<Reservation> findByUsers(Users users);
 }
